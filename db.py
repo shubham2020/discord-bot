@@ -55,8 +55,8 @@ class Database:
 if __name__=='__main__':
     db = Database()
     db.createTables()
-    db.insertUser('1234', 'shubham')
-    db.insertSearchQuery('Some NodeJs One', '1234')
-    db.insertSearchQuery('Django', '1234')
-    print(db.getSearchHistory('1234', 'NodeJs'))
+    # db.insertUser('1234', 'shubham')
+    # db.insertSearchQuery('Some NodeJs One', '1234')
+    # db.insertSearchQuery('Django', '1234')
+    # print(db.getSearchHistory('234', 'NodeJs'))
     db.closeConnection()
