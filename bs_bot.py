@@ -21,7 +21,7 @@ class MyClient(discord.Client):
         if message.author == self.user:
             return
 
-        if message.content == 'hi':
+        if str(message.content).lower() == 'hi':
             await message.channel.send('hey')
 
         if message.content.startswith('!google'):
