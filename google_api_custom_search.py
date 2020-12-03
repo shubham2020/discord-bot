@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
 
+################################################################
+#         MODULE TO DEAL WITH GOOGLE CUSTOM SEARCH API
+################################################################
+
 from apiclient.discovery import build
 import os
 
 class GoogleCustomSearch:
 
+    # initialize the keys required for api calls
     def __init__(self):
         self.api_key = os.environ['API_KEY']
         self.cx = os.environ['CX']
 
+    # function to call the custom search API with exception handling
     def search(self, query):
         try:
             resource = build("customsearch", 'v1', developerKey=self.api_key).cse()
@@ -22,6 +28,7 @@ class GoogleCustomSearch:
         else:
             return result['items']
 
+    # function to send the search query result parsed in the form of top 5 results
     def parsedTop5(self, query):
         top5 = self.search(query=query)
         string = ''

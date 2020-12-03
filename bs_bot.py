@@ -20,10 +20,12 @@ class MyClient(discord.Client):
         # don't respond to ourselves
         if message.author == self.user:
             return
-
+        
+        # to respond to the 'hi' from the user
         if str(message.content).lower() == 'hi':
             await message.channel.send('hey')
 
+        # to handle !google search command
         if message.content.startswith('!google'):
             msg = (str(message.content)[8:].strip()).lower()
             data.insertUser(message.author.id, message.author.name)
@@ -31,6 +33,7 @@ class MyClient(discord.Client):
             top5 = gcs.parsedTop5(query=msg)
             await message.channel.send(top5)
 
+        # to handle !recent search commmand 
         if message.content.startswith('!recent'):
             msg = (str(message.content)[8:].strip()).lower()
             lst = data.getSearchHistory(message.author.id, msg)
