@@ -31,6 +31,10 @@ class GoogleCustomSearch:
     # function to send the search query result parsed in the form of top 5 results
     def parsedTop5(self, query):
         top5 = self.search(query=query)
+
+        if top5 is None:
+            return "Search Not possible: Error communicating with Google engine"
+            
         string = ''
         for item in top5:
             string += item['title'] + '\n' + item['link'] + '\n'
