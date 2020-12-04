@@ -55,7 +55,7 @@ class Database:
     
     # get search history as per the text sent by the user
     def getSearchHistory(self, user_id, like_text):
-        self.cursor.execute("SELECT search_text FROM search_history WHERE user_id = ? and search_text LIKE ? OR search_text LIKE ? OR search_text LIKE ? OR search_text = ?",(user_id, '%'+like_text+'%', '%'+like_text, like_text+'%', like_text))
+        self.cursor.execute("SELECT search_text FROM search_history WHERE user_id = ? and (search_text LIKE ? OR search_text LIKE ? OR search_text LIKE ? OR search_text = ?)",(user_id, '%'+like_text+'%', '%'+like_text, like_text+'%', like_text))
         result = self.cursor.fetchall()
         return result
 
